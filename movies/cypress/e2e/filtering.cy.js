@@ -55,6 +55,37 @@ describe("Filtering", () => {
     });
   });
   describe("Combined genre and title", () => {
-    // TODO
+    it("should display movies that match both genre and title filters", () => {
+      const selectedGenreId = 35; // Replace with the desired genre ID
+      const selectedGenreText = "Comedy"; // Replace with the desired genre text
+      const genreMatchingMovies = filterByGenre(movies, selectedGenreId);
+  
+      const searchString = "m"; // Replace with the desired title filter
+      const titleMatchingMovies = filterByTitle(movies, searchString);
+  
+      // Filter movies by both genre and title
+      const combinedMatchingMovies = movies.filter((movie) =>
+        genreMatchingMovies.includes(movie) && titleMatchingMovies.includes(movie)
+      );
+  
+      // Set the genre filter
+      cy.get("#genre-select").click();
+      cy.get("li").contains(selectedGenreText).click();
+  
+      // Set the title filter
+      cy.get("#filled-search").clear().type(searchString);
+  
+      // Verify that the displayed movies match both genre and title filters
+      cy.get(".MuiCardHeader-content").should(
+        "have.length",
+        combinedMatchingMovies.length
+      );
+  
+      // Verify the title of each displayed movie
+      cy.get(".MuiCardHeader-content").each(($card, index) => {
+        cy.wrap($card).find("p").contains(combinedMatchingMovies[index].title);
+      });
+    });
   });
+  
 });
