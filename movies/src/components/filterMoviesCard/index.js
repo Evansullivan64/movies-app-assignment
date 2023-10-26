@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { getGenres } from "/Users/evans/OneDrive - South East Technological University (Waterford Campus)/CLASSES/webapp2/react-movie-labs/movies/src/api/tmdb-api"
+import { getGenres } from "../../api/tmdb-api"
 
 const formControl = 
   {

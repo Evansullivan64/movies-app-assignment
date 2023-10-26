@@ -10,7 +10,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
 
-const context = useContext(MoviesContext);
+
 
 const ratings = [
   {
@@ -35,8 +35,7 @@ const ratings = [
   },
 ];
 
-const [open, setOpen] = useState(false); 
-const navigate = useNavigate();
+
 
 const styles = {
   root: {
@@ -67,7 +66,10 @@ const styles = {
 
 const ReviewForm = ({ movie }) => {
   const [rating, setRating] = useState(3);
-  
+  const context = useContext(MoviesContext);
+
+  const [open, setOpen] = useState(false); 
+const navigate = useNavigate();
   const defaultValues = {
     author: "",
     review: "",
