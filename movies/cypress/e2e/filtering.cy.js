@@ -40,8 +40,8 @@ describe("Filtering", () => {
   });
   describe("By movie genre", () => {
     it("show movies with the selected genre", () => {
-      const selectedGenreId = 35;
-      const selectedGenreText = "Comedy";
+      const selectedGenreId = 18;
+      const selectedGenreText = "Drama";
       const matchingMovies = filterByGenre(movies, selectedGenreId);
       cy.get("#genre-select").click();
       cy.get("li").contains(selectedGenreText).click();
@@ -56,11 +56,11 @@ describe("Filtering", () => {
   });
   describe("Combined genre and title", () => {
     it("should display movies that match both genre and title filters", () => {
-      const selectedGenreId = 35; // Replace with the desired genre ID
-      const selectedGenreText = "Comedy"; // Replace with the desired genre text
+      const selectedGenreId = 18; 
+      const selectedGenreText = "Drama"; 
       const genreMatchingMovies = filterByGenre(movies, selectedGenreId);
   
-      const searchString = "m"; // Replace with the desired title filter
+      const searchString = "m"; 
       const titleMatchingMovies = filterByTitle(movies, searchString);
   
       // Filter movies by both genre and title
