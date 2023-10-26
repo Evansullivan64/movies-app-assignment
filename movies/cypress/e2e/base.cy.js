@@ -58,6 +58,8 @@ describe("Base tests", () => {
             cy.wrap($card).contains(genreChips[index]);
           });
         });
+        
     });
   });
+
 });
