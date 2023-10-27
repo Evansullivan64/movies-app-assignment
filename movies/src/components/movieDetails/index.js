@@ -11,7 +11,7 @@ import React, { useState,useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import { useParams } from 'react-router-dom';
-import { getMovieRecommendations } from "../../api/tmdb-api";
+import { getMovieRecommendations,getMovieCredits } from "../../api/tmdb-api";
 
 
 
@@ -28,6 +28,7 @@ const chip = { margin: 0.5 };
 const MovieDetails = ({ movie }) => { 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [recommendations, setRecommendations] = useState([]);
+  const [credits, setCredits] = useState([]);
 
 
   useEffect(() => {
@@ -35,6 +36,10 @@ const MovieDetails = ({ movie }) => {
       getMovieRecommendations(movie.id)
         .then(data => setRecommendations(data.results || []))
         .catch(error => console.error('Error fetching recommendations:', error));
+
+        getMovieCredits(movie.id)
+        .then(data => setCredits(data.cast || [])) 
+        .catch(error => console.error('Error fetching movie credits:', error));
     }
   }, [movie]);
 
@@ -87,6 +92,18 @@ const MovieDetails = ({ movie }) => {
           </li>
         ))}
       </Paper>
+
+      <Paper component="ul" sx={root}>
+      <li>
+        <Chip label="Movie Credits" sx={chip} color="primary" />
+      </li>
+      {credits.map(member => (
+        <li key={member.id}>
+          <Chip label={member.name} sx={chip} />
+        </li>
+      ))}
+    </Paper>
+
 
       <Fab
         color="secondary"
