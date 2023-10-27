@@ -7,10 +7,12 @@ import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import { useParams } from 'react-router-dom';
+import { getMovieRecommendations } from "../../api/tmdb-api";
+
 
 
 const root = {
@@ -25,6 +27,16 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => { 
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [recommendations, setRecommendations] = useState([]);
+
+
+  useEffect(() => {
+    if (movie.id) {
+      getMovieRecommendations(movie.id)
+        .then(data => setRecommendations(data.results || []))
+        .catch(error => console.error('Error fetching recommendations:', error));
+    }
+  }, [movie]);
 
   return (
     <>
@@ -92,6 +104,28 @@ const MovieDetails = ({ movie }) => {
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
+
+        {/* Display recommendations */}
+        <Typography variant="h5" component="h3">
+        Recommendations
+      </Typography>
+      {recommendations.length > 0 ? (
+        <ul>
+          {recommendations.map((recommendedMovie) => (
+            <li key={recommendedMovie.id}>
+              <Typography variant="subtitle1" component="p">
+                {recommendedMovie.title}
+                
+              </Typography>
+             
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <Typography variant="subtitle1" component="p">
+          No recommendations available.
+        </Typography>
+      )}
       </>
   );
 };
