@@ -130,3 +130,6 @@ dist
 .pnp.*
 cypress.env.json
 .env
+
+# cypress
+cypress/
