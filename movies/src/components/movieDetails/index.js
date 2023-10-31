@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import React, { useState,useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
+import MovieList from "../movieList";
 import MovieReviews from "../movieReviews"
 import { useParams } from 'react-router-dom';
 import { getMovieRecommendations,getMovieCredits } from "../../api/tmdb-api";
@@ -122,8 +123,7 @@ const MovieDetails = ({ movie }) => {
         <MovieReviews movie={movie} />
       </Drawer>
 
-        {/* Display recommendations */}
-        <Typography variant="h5" component="h3">
+      <Typography variant="h5" component="h3">
         Recommendations
       </Typography>
       {recommendations.length > 0 ? (
@@ -132,9 +132,8 @@ const MovieDetails = ({ movie }) => {
             <li key={recommendedMovie.id}>
               <Typography variant="subtitle1" component="p">
                 {recommendedMovie.title}
-                
+               
               </Typography>
-             
             </li>
           ))}
         </ul>
@@ -143,6 +142,7 @@ const MovieDetails = ({ movie }) => {
           No recommendations available.
         </Typography>
       )}
+
       </>
   );
 };
