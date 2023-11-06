@@ -11,11 +11,9 @@
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Features](#features)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
-- [Acknowledgments](#acknowledgments)
+
 
 ## About The Project
 
@@ -78,21 +76,10 @@ Contributions are welcome! If you have suggestions, fork the repo and create a p
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Not Distributed under any License. See `LICENSE.txt` for more information.
 
 ## Contact
 
+Project Link: [movies-app-assignment.git](https://github.com/Evansullivan64/movies-app-assignment.git)
 
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-## Acknowledgments
-
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
