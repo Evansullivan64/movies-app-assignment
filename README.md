@@ -77,6 +77,7 @@ For usage examples, refer to the [Documentation](https://example.com).
 
 ## Contributing
 
+Template was used from (https://github.com/othneildrew/Best-README-Template/blob/master/README.md?plain=1)
 Contributions are welcome! If you have suggestions, fork the repo and create a pull request, or open an issue with the tag "enhancement."
 
 ## License
