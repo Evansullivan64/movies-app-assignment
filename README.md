@@ -40,8 +40,10 @@ The React Movie App is designed to present various movie details, genres, cast i
 ### Prerequisites
 
 - Download the zipped copy of this project to your computer.
-- [Node.js LTS](https://nodejs.org/en/download)
-- Create a file called `.env` and place your API key there.
+- Download Node [Node.js LTS](https://nodejs.org/en/download)
+- Create a file called `.env` inside the root folder and place your API key there.
+- ![image](https://github.com/Evansullivan64/movies-app-assignment/assets/99019007/4aff73d2-cbd5-4a9e-94b0-07afa2928ab9)
+
 
 ### Installation
 
@@ -50,6 +52,9 @@ The React Movie App is designed to present various movie details, genres, cast i
     npm install
     ```
 2. Start the application:
+    ```sh
+    cd movies
+    ```
     ```sh
     npm start
     ```
