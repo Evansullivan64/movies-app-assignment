@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState,useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieList from "../movieList";
+import { Link } from "react-router-dom";
 import MovieReviews from "../movieReviews"
 import { useParams } from 'react-router-dom';
 import { getMovieRecommendations,getMovieCredits } from "../../api/tmdb-api";
@@ -126,22 +127,9 @@ const MovieDetails = ({ movie }) => {
       <Typography variant="h5" component="h3">
         Recommendations
       </Typography>
-      {recommendations.length > 0 ? (
-        <ul>
-          {recommendations.map((recommendedMovie) => (
-            <li key={recommendedMovie.id}>
-              <Typography variant="subtitle1" component="p">
-                {recommendedMovie.title}
-               
-              </Typography>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <Typography variant="subtitle1" component="p">
-          No recommendations available.
-        </Typography>
-      )}
+      <Link to={`/movie/${movie.id}/recommendations`}>
+        <button class="button">View Recommendations</button>
+      </Link>
 
       </>
   );

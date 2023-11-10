@@ -22,6 +22,10 @@ const formControl = {
 export default function FilterMoviesCard(props) {
   const { data, error, isLoading, isError } = useQuery("genres", getGenres);
 
+  const ratings = Array.from({ length: 11 }, (_, i) => i); 
+  const years = Array.from({ length: 224 }, (_, i) => 2023 - i); 
+
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -38,7 +42,7 @@ export default function FilterMoviesCard(props) {
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); // NEW
+    props.onUserInput(type, value);
   };
 
   const handleTextChange = (e, props) => {
@@ -47,6 +51,14 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
+  };
+
+  const handleRatingChange = (e) => {
+    handleChange(e, "rating", e.target.value);
+  };
+
+  const handleYearChange = (e) => {
+    handleChange(e, "year", e.target.value);
   };
 
  
@@ -71,7 +83,7 @@ export default function FilterMoviesCard(props) {
           type="search"
           variant="filled"
           value={props.titleFilter}
-          onChange={handleTextChange} 
+          onChange={handleTextChange}
         />
         <FormControl sx={{ ...formControl }}>
           <InputLabel id="genre-label">Genre</InputLabel>
@@ -82,23 +94,45 @@ export default function FilterMoviesCard(props) {
             value={props.genreFilter}
             onChange={handleGenreChange}
           >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
+            {genres.map((genre) => (
+              <MenuItem key={genre.id} value={genre.id}>
+                {genre.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
-      </CardContent>
-      <CardMedia sx={{ height: 300 }} image={img} title="Filter" />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
+        <FormControl sx={{ ...formControl }}>
+          <InputLabel id="rating-label">Rating</InputLabel>
+          <Select
+            labelId="rating-label"
+            id="rating-select"
+            defaultValue=""
+            value={props.ratingFilter}
+            onChange={handleRatingChange}
+          >
+            {ratings.map((rating) => (
+              <MenuItem key={rating} value={rating}>
+                {rating}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ ...formControl }}>
+          <InputLabel id="year-label">Year</InputLabel>
+          <Select
+            labelId="year-label"
+            id="year-select"
+            defaultValue=""
+            value={props.yearFilter}
+            onChange={handleYearChange}
+          >
+            {years.map((year) => (
+              <MenuItem key={year} value={year}>
+                {year}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </CardContent>
     </Card>
   );
