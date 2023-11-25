@@ -96,15 +96,21 @@ const MovieDetails = ({ movie }) => {
       </Paper>
 
       <Paper component="ul" sx={root}>
-      <li>
-        <Chip label="Movie Credits" sx={chip} color="primary" />
-      </li>
-      {credits.map(member => (
-        <li key={member.id}>
-          <Chip label={member.name} sx={chip} />
-        </li>
-      ))}
-    </Paper>
+  <li>
+    <Chip
+      label="Movie Credits"
+      sx={chip}
+      color="primary"
+    />
+  </li>
+  {credits.map((member) => (
+    <li key={member.id}>
+      <Link to={`/actor/${member.name}`}>
+        <Chip label={member.name} sx={chip} clickable />
+      </Link>
+    </li>
+  ))}
+</Paper>
 
 
       <Fab

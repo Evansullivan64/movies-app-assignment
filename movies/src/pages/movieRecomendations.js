@@ -4,6 +4,8 @@ import Spinner from "../components/spinner";
 import Typography from "@mui/material/Typography";
 import { getMovieRecommendations } from "../api/tmdb-api";
 import { useParams } from 'react-router-dom';
+import PageTemplate from "../components/templateMovieListPage";
+import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
 const MovieRecommendationsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,25 +31,17 @@ const MovieRecommendationsPage = () => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+  const movies = data.results;
 
   return (
     <div>
-      {recommendations.length > 0 ? (
-        <ul>
-          {recommendations.map((recommendedMovie) => (
-            <li key={recommendedMovie.id}>
-              <Typography variant="subtitle1" component="p">
-                {recommendedMovie.title}
-              </Typography>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <Typography variant="subtitle1" component="p">
-          No recommendations available.
-        </Typography>
-      )}
-      {/* Add pagination as you did before */}
+      <PageTemplate
+        title="Movie recomendations"
+        movies={movies}
+        action={(movie) => {
+          return <AddToFavoritesIcon movie={movie} />;
+        }}
+      />
     </div>
   );
 };

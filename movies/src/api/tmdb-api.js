@@ -164,3 +164,33 @@ export const getMovieReleaseDates = (id) => {
     });
 };
 
+
+
+
+export const getActorsMovies = async (page, actorName) => {
+  try {
+    const response = await fetch(
+      //https://developer.themoviedb.org/docs/search-and-query-for-details
+      `https://api.themoviedb.org/3/search/person?query=${actorName}&api_key=${process.env.REACT_APP_TMDB_KEY}`
+    );
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    const data = await response.json();
+    const actorId = data.results[0].id;
+
+    const movieResponse = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?with_cast=${actorId}&api_key=${process.env.REACT_APP_TMDB_KEY}`
+    );
+
+    if (!movieResponse.ok) {
+      throw new Error(movieResponse.json().message);
+    }
+
+    const moviesData = await movieResponse.json();
+    return moviesData;
+  } catch (error) {
+    throw new Error('Failed to fetch data');
+  }
+};
+
