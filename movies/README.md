@@ -7,8 +7,7 @@ Name: Evan Sullivan
 This repo contains my assignment 1 react web app.
 
 ### Features.
-[ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
- 
+
 + NowPLaying page
 + Trending movies page
 + movie recomendations based on the selected movie
